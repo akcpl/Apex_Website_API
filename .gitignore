@@ -1,0 +1,12 @@
+bin/
+obj/
+publish/
+.vs/
+*.user
+*.suo
+Logs/
+logs/
+
+appsettings.json
+appsettings.Production.json
+Files/API_Jwt_key.txt
