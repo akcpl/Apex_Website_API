@@ -64,16 +64,6 @@ namespace Apex_Website_API.Services.Implementations
 
                 _logger.LogInformation("CAREER SERVICE | Database save successful | CareerId: {CareerId}",careerId);
 
-                // ==========================================
-                // STEP 4: Send Email
-                // ==========================================
-                // Email code can be enabled later.
-                //
-                // await _emailService.SendCareerEmailAsync(
-                //     "amit.yadav@apexkidneycare.in",
-                //     $"New Career Application - {career.ApplyForPosition}",
-                //     ...);
-
                 _logger.LogInformation("CAREER SERVICE | Save completed | CareerId: {CareerId}",careerId);
 
                 return careerId;
