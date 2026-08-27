@@ -24,11 +24,31 @@ namespace Apex_Website_API.Services.Implementations
                 "message": "Contact information saved successfully."
             }
             """;
-            _logger.LogInformation("CONTACT SERVICE | Save started");
-            var contactId = await _contactRepository.SaveContactAsync(contact,requestJson,responseJson);
-            _logger.LogInformation("CONTACT SERVICE | Save completed");
+            //_logger.LogInformation("CONTACT SERVICE | Save started");
+            //var contactId = await _contactRepository.SaveContactAsync(contact,requestJson,responseJson);
+            //_logger.LogInformation("CONTACT SERVICE | Save completed");
 
-            return contactId;
+            //return contactId;
+            try
+            {
+                _logger.LogInformation("CONTACT SERVICE | Save started");
+
+                var contactId =await _contactRepository.SaveContactAsync(contact,requestJson,responseJson);
+
+                _logger.LogInformation("CONTACT SERVICE | Save completed | ContactId: {ContactId}",contactId);
+
+                return contactId;
+            }
+            catch (ArgumentException ex)
+            {
+                _logger.LogWarning(ex,"CONTACT SERVICE | Validation error");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex,"CONTACT SERVICE | Save failed");
+                throw;
+            }
         }
     }
 }
